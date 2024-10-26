@@ -1,0 +1,201 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 53;
+	--bg: hsl(var(--hue),10%,90%);
+	--fg: hsl(var(--hue),10%,10%);
+	--primary: hsl(var(--hue),90%,50%);
+	--trans-dur: 0.3s;
+	--trans-timing1: cubic-bezier(0.65,0,0.35,1);
+	--trans-timing2: cubic-bezier(0.65,0,0.35,1.35);
+	font-size: calc(14px + (30 - 14) * (100vw - 280px) / (3840 - 280));
+}
+body,
+button,
+textarea {
+	font: 1em/1.5 Montserrat, sans-serif;
+}
+body {
+	background-color: var(--bg);
+	color: var(--fg);
+	display: flex;
+	height: 100vh;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+.idea-form {
+	background-color: hsl(0,0%,0%);
+	color: hsl(0,0%,100%);
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 16.5em;
+	height: 4.5em;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur),
+		height var(--trans-dur) var(--trans-timing2);
+
+	&,
+	&__btn,
+	&__content {
+		border-radius: 1.5em;
+	}
+	&,
+	&__btn {
+		position: relative;
+	}
+	&__btn,
+	&__textarea {
+		outline: transparent;
+		transition:
+			background-color var(--trans-dur),
+			box-shadow var(--trans-dur),
+			opacity var(--trans-dur) var(--trans-timing1);
+		-webkit-appearance: none;
+		appearance: none;
+		-webkit-tap-highlight-color: transparent;
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.3;
+		}
+	}
+	&__btn {
+		background-color: hsl(0,0%,0%);
+		box-shadow: 0 0 0 0.25em hsla(var(--hue),90%,30%,0);
+		color: hsl(0,0%,100%);
+		cursor: pointer;
+		display: flex;
+		margin-inline-start: auto;
+		padding: 0.5em 1em;
+		z-index: 2;
+
+		&--start {
+			background-color: transparent;
+			box-shadow: none;
+			color: currentColor;
+			display: flex;
+			align-items: center;
+			letter-spacing: 0.0625em;
+			padding-inline-start: 5.25em;
+			width: 100%;
+			height: 4.5em;
+			text-transform: uppercase;
+			transition:
+				opacity var(--trans-dur) var(--trans-timing1),
+				visibility var(--trans-dur) steps(1,start);
+		}
+		&:focus-visible {
+			box-shadow: 0 0 0 0.25em hsla(var(--hue),90%,30%,1);
+		}
+	}
+	&__content {
+		opacity: 0;
+		padding: 1.5em 1em 0.75em;
+		padding-inline-start: 5.25em;
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		transition:
+			opacity var(--trans-dur) var(--trans-timing1),
+			visibility var(--trans-dur) steps(1,end);
+	}
+	&__fill,
+	&__icon,
+	&__label {
+		position: absolute;
+	}
+	&__fill {
+		background-color: hsl(var(--hue),90%,50%);
+		border-radius: 50%;
+		top: 1.75em;
+		left: 2em;
+		width: 1em;
+		height: 1em;
+		transform: translateY(50%) scale(0);
+		transition: transform var(--trans-dur) var(--trans-timing1);
+
+		[dir="rtl"] & {
+			right: 2em;
+			left: auto;
+		}
+	}
+	&__btn--start:focus-visible {
+		box-shadow: none;
+	}
+	&__btn--start:focus-visible + &__fill,
+	&__btn--start:hover + &__fill {
+		transform: translateY(0) scale(1);
+	}
+	&__icon {
+		color: currentColor;
+		display: block;
+		top: 0.75em;
+		left: 1em;
+		width: 3em;
+		height: 3em;
+		z-index: 1;
+
+		[dir="rtl"] & {
+			right: 1em;
+			left: auto;
+		}
+	}
+	&__label {
+		overflow: hidden;
+		width: 1px;
+		height: 1px;
+	}
+	&__textarea {
+		background-color: transparent;
+		color: hsl(0,0%,0%);
+		display: block;
+		margin-bottom: 0.75em;
+		resize: none;
+		width: 100%;
+		height: 3em;
+
+		&::placeholder {
+			color: hsl(var(--hue),10%,50%);
+		}
+	}
+	 /* expanded */
+	&[data-expanded="true"] {
+		background-color: transparent;
+        height: 8.5em;
+		transition-timing-function: steps(1,end), ease, var(--trans-timing2);
+	}
+	&[data-expanded="true"] &__btn--start {
+		opacity: 0;
+		pointer-events: none;
+		transition-timing-function: var(--trans-timing1), steps(1,end);
+		visibility: hidden;
+	}
+	&[data-expanded="true"] &__content {
+		opacity: 1;
+		transition-timing-function: var(--trans-timing1), steps(1,start);
+		visibility: visible;
+	}
+	&[data-expanded="true"] &__fill {
+		transform: translateY(0) scale(32);
+	}
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(var(--hue),10%,10%);
+		--fg: hsl(var(--hue),10%,90%);
+	}
+	.idea-form {
+		background-color: hsl(0,0%,100%);
+		color: hsl(0,0%,0%);
+	}
+}

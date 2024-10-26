@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI fantastic form</title>
+    <link rel="stylesheet" href="styles.css"></head>
+    <link rel="stylesheet" href="style2.css"></head>
+<body>
+        <!-- SWITCH LIGHT AND DARK -->
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="moon">
+                    <path d="m27.5,25c-6.904,0-12.5-5.596-12.5-12.5,0-5.76,3.897-10.606,9.196-12.055C22.843.155,21.44,0,20,0,8.954,0,0,8.954,0,20s8.954,20,20,20,20-8.954,20-20c0-1.44-.155-2.843-.445-4.196-1.449,5.3-6.296,9.196-12.055,9.196Z" />
+                </clipPath>
+            </defs>
+        </svg>
+        <label class="switch">
+            <span class="switch__icon switch__icon--light">
+                <span class="switch__icon-part switch__icon-part--1"></span>
+                <span class="switch__icon-part switch__icon-part--2"></span>
+                <span class="switch__icon-part switch__icon-part--3"></span>
+                <span class="switch__icon-part switch__icon-part--4"></span>
+                <span class="switch__icon-part switch__icon-part--5"></span>
+                <span class="switch__icon-part switch__icon-part--6"></span>
+                <span class="switch__icon-part switch__icon-part--7"></span>
+                <span class="switch__icon-part switch__icon-part--8"></span>
+                <span class="switch__icon-part switch__icon-part--9"></span>
+            </span>
+            <input class="switch__inputt" type="checkbox" role="switch" />
+            <span class="switch__icon switch__icon--dark">
+                <span class="switch__icon-part switch__icon-part--1">
+                    <span class="switch__icon-part switch__icon-part--1a"></span>
+                    <span class="switch__icon-part switch__icon-part--1b"></span>
+                </span>
+            </span>
+            <span class="switch__label">Dark Mode</span>
+        </label>
+
+        <!--  -->
+
+    <form id="idea" class="idea-form" action="">
+        <svg class="idea-form__icon" viewBox="0 0 32 32" width="32px" height="32px" aria-hidden="true">
+            <g fill="currentcolor">
+                <path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z" />
+                <rect x="11" y="24" width="10" height="2"/>
+                <rect x="13" y="28" width="6" height="2"/>
+            </g>
+        </svg>
+        <button class="idea-form__btn idea-form__btn--start" type="button" data-toggle>J'ai une idée</button>
+        <div class="idea-form__fill"></div>
+        <div class="idea-form__content">
+            <label for="my-idea" class="idea-form__label">Idea</label>
+            <textarea id="my-idea" class="idea-form__textarea" placeholder="My idea is…"></textarea>
+            <button class="idea-form__btn" type="submit" disabled>Envoyer</button>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
